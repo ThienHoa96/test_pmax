@@ -12,13 +12,15 @@ Test Scenario 2
     [Tags]    DEBUG
     Open Browser     https://www.amazon.com    chrome
     Maximize Browser Window
-    Sleep    2
+    Sleep    0
     Input text    ${search_text}     chair
     Click Button    ${search_btn}
     Click Element    ${chair}
-    SeleniumLibrary.Select From List By Label     quantity_0    5
-#    Get Selected List Labels     //*[@id="quantity_4"]
+    Sleep    0
+    Execute Javascript  document.getElementById('quantity').click()
+    Click Element  //*[@id="quantity_4"]
     Click Button    ${add_cart_btn}
-
-#    SeleniumLibrary.Select From List By Label     quantity_0    5
+    Sleep    0
+    Click Element    //*[@id="nav-cart"]
+    Element Should Contain     //*[@id="a-autoid-0"]/span     5
     Close Browser
